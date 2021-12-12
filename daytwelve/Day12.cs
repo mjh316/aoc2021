@@ -11,7 +11,7 @@ public class Day12 {
 
 
     static void dfs(string node, Dictionary<string, int> vis, bool twice) {
-        if (node[0] >= 97 && vis.ContainsKey(node) && vis[node] >= 2) return;
+        if (node[0] >= 97 && vis.ContainsKey(node) && vis[node] == 2) return;
         if ((node == "start" || node == "end") && vis.ContainsKey(node)) return;
         if (twice && node[0] >= 97 && vis.ContainsKey(node)) return;
 
@@ -30,7 +30,7 @@ public class Day12 {
             return;
         }
         foreach (string neighbor in adj[node]) {
-            if (neighbor[0] >= 97 && vis.ContainsKey(neighbor) && vis[neighbor] <= 1) {
+            if (neighbor[0] >= 97 && vis.ContainsKey(neighbor) && vis[neighbor] == 1) {
                 if (twice) continue;
                 else {
                     dfs(neighbor, new Dictionary<string, int>(vis), true);
